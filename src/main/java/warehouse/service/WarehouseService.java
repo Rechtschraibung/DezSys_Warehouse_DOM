@@ -29,4 +29,8 @@ public class WarehouseService {
     public void deleteWarehouse(String id) {
         warehouseRepository.deleteById(id);
     }
+
+    public void deleteAllWarehouses() {
+        warehouseRepository.deleteAll();
+    }
 }

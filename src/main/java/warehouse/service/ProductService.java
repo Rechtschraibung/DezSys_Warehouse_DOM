@@ -18,16 +18,20 @@ public class ProductService {
         return productRepository.save(product);
     }
 
-    public List<ProductData> findAllProducts() {
+    public List<ProductData> getAllProducts() {
         return productRepository.findAll();
     }
 
-    public Optional<ProductData> findProductByID(String id) {
+    public Optional<ProductData> getProductByID(String id) {
         return productRepository.findById(id);
     }
 
     public void deleteProduct(String id) {
         Optional<ProductData> product = productRepository.findById(id);
         product.ifPresent(productData -> productRepository.delete(productData));
+    }
+
+    public void deleteAllProducts() {
+        productRepository.deleteAll();
     }
 }

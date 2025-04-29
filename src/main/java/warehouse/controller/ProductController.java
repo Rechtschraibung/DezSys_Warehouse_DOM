@@ -23,18 +23,18 @@ public class ProductController {
 
     @GetMapping
     public List<ProductData> getAllProducts() {
-        return productService.findAllProducts();
+        return productService.getAllProducts();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<ProductData> getProductById(@PathVariable String id) {
-        Optional<ProductData> product = productService.findProductByID(id);
+        Optional<ProductData> product = productService.getProductByID(id);
         return product.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteProductById(@PathVariable String id) {
-        if (productService.findProductByID(id).isPresent()) {
+        if (productService.getProductByID(id).isPresent()) {
             productService.deleteProduct(id);
             return ResponseEntity.ok("Produkt gelöscht.");
         } else {
