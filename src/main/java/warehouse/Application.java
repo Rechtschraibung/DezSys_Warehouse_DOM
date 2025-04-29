@@ -30,22 +30,26 @@ public class Application implements CommandLineRunner {
 		productService.deleteAllProducts();
 		warehouseService.deleteAllWarehouses();
 
+		Warehouse wh_hb = new Warehouse("Lager Nord", "Hamburg");
+		Warehouse wh_mn = new Warehouse("Lager Süd", "München");
+		Warehouse wh_dd = new Warehouse("Lager Ost", "Dresden");
+
 		// Lagerhäuser anlegen
-		warehouseService.createWarehouse(new Warehouse("Lager Nord", "Hamburg"));
-		warehouseService.createWarehouse(new Warehouse("Lager Süd", "München"));
-		warehouseService.createWarehouse(new Warehouse("Lager Ost", "Dresden"));
+		warehouseService.createWarehouse(wh_hb);
+		warehouseService.createWarehouse(wh_mn);
+		warehouseService.createWarehouse(wh_dd);
 
 		// Produkte anlegen
-		productService.addProduct(new ProductData("1", "Bio Orangensaft Sonne", "Getraenk", 2500));
-		productService.addProduct(new ProductData("1", "Bio Apfelsaft Gold", "Getraenk", 3420));
-		productService.addProduct(new ProductData("1", "Ariel Waschmittel Color", "Waschmittel", 478));
-		productService.addProduct(new ProductData("1", "Mampfi Katzenfutter Rind", "Tierfutter", 1324));
-		productService.addProduct(new ProductData("2", "Saugstauberbeutel Ingres", "Reinigung", 7390));
-		productService.addProduct(new ProductData("2", "Mineralwasser Classic", "Getraenk", 4800));
-		productService.addProduct(new ProductData("2", "Bio Hafermilch", "Getraenk", 1500));
-		productService.addProduct(new ProductData("3", "Hundeknochen Beef", "Tierfutter", 920));
-		productService.addProduct(new ProductData("3", "WC Reiniger Ultra", "Reinigung", 1120));
-		productService.addProduct(new ProductData("3", "Essigreiniger Natur", "Reinigung", 870));
+		productService.addProduct(new ProductData(wh_hb.getId(), "Bio Orangensaft Sonne", "Getraenk", 2500));
+		productService.addProduct(new ProductData(wh_hb.getId(), "Bio Apfelsaft Gold", "Getraenk", 3420));
+		productService.addProduct(new ProductData(wh_hb.getId(), "Ariel Waschmittel Color", "Waschmittel", 478));
+		productService.addProduct(new ProductData(wh_hb.getId(), "Mampfi Katzenfutter Rind", "Tierfutter", 1324));
+		productService.addProduct(new ProductData(wh_mn.getId(), "Saugstauberbeutel Ingres", "Reinigung", 7390));
+		productService.addProduct(new ProductData(wh_mn.getId(), "Mineralwasser Classic", "Getraenk", 4800));
+		productService.addProduct(new ProductData(wh_mn.getId(), "Bio Hafermilch", "Getraenk", 1500));
+		productService.addProduct(new ProductData(wh_dd.getId(), "Hundeknochen Beef", "Tierfutter", 920));
+		productService.addProduct(new ProductData(wh_dd.getId(), "WC Reiniger Ultra", "Reinigung", 1120));
+		productService.addProduct(new ProductData(wh_dd.getId(), "Essigreiniger Natur", "Reinigung", 870));
 
 		// Konsolenausgabe
 		System.out.println();
